@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Royals Club - Unlock Words, Unlock Doors!</title>
+    <!-- Inter Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #0a0a0f 0%, #151520 50%, #0a0a0f 100%);
+        }
+        .container-card {
+            background-color: #1a1a2e;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .container-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.6);
+        }
+        .glow-text {
+            text-shadow: 0 0 10px #FFD700, 0 0 20px #FFD700, 0 0 30px #FFD700;
+        }
+        .glow-effect {
+            position: relative;
+            z-index: 1;
+        }
+        .glow-effect::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 215, 0, 0.1);
+            border-radius: 12px;
+            pointer-events: none;
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .container-card:hover .glow-effect::before {
+            opacity: 1;
+        }
+        .hero-bg {
+            background-image: url('data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBAQEBAYEBAYEBAQEBAYEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQH/wgAREAA4ADgDAREAAhEBAxEB/8QAGwAAAgMBAQEAAAAAAAAAAAAAAgMAAQQFBgcI/8QAGQEAAgMBAQAAAAAAAAAAAAAAAgMAAQQFBwYI/9oADAMBAhBHAQAAALgAAAAAAAAAACq110r7OAAFVl0q7GABV1Lq19nAAKzLqV9nAAK5Lq11XUAAp0upXW6gAAp0upXWaAAAKNTV1O9qAAAKNTU1UIAAAAAAAAAAAAAABQAAAAAAAABVlAAAAAAABV1AAAAAABVlAAAAAABVlAAAAAAAAAAAAAAA//Z');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            z-index: 0;
+        }
+        .hero-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 1;
+        }
+        @media print {
+            body {
+                background: #ffffff;
+                color: #000000;
+            }
+            .container-card {
+                background-color: #ffffff;
+                box-shadow: none;
+                border: 1px solid #ccc;
+            }
+            input, select, textarea, button, .hidden-on-print, .glow-text, .glow-effect, .hero-bg, .visible-on-print {
+                display: none !important;
+            }
+            .print-form-container {
+                display: block !important;
+                color: #000 !important;
+            }
+            .print-form-container input, .print-form-container textarea {
+                display: block !important;
+                width: 100% !important;
+                border: 1px solid #000 !important;
+                margin-bottom: 1rem !important;
+                background-color: #f0f0f0 !important;
+                color: #000 !important;
+                -webkit-print-color-adjust: exact;
+            }
+            .print-form-container label {
+                display: block !important;
+                font-weight: bold;
+                margin-top: 1rem;
+            }
+            .print-form-container .print-form-header {
+                text-align: center;
+                margin-bottom: 2rem;
+            }
+        }
+    </style>
+</head>
+<body class="text-gray-200">
+
+    <!-- Header & Navigation -->
+    <header class="bg-gray-900 bg-opacity-80 backdrop-blur-sm fixed top-0 left-0 w-full z-50 shadow-lg hidden-on-print">
+        <nav class="container mx-auto flex justify-between items-center py-4 px-4 md:px-8">
+            <a href="#hero" class="flex items-center space-x-2">
+                <img src="TR.png" alt="The Royals Club Logo" class="w-12 h-12 rounded-full">
+                <span class="text-xl font-bold text-yellow-400 glow-text hidden md:block">The Royals Club</span>
+            </a>
+            <div class="space-x-6 text-sm md:text-base">
+                <a href="#about" class="hover:text-yellow-400 transition-colors">About Us</a>
+                <a href="#courses" class="hover:text-yellow-400 transition-colors">Courses</a>
+                <a href="#testimonials" class="hover:text-yellow-400 transition-colors">Testimonials</a>
+                <a href="#contact" class="hover:text-yellow-400 transition-colors">Contact</a>
+                <a href="#register" class="bg-yellow-500 text-gray-900 py-2 px-4 rounded-full font-semibold hover:bg-yellow-600 transition-colors">Register</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero-bg relative flex items-center justify-center min-h-screen pt-24 pb-12 px-4 text-center">
+        <div class="absolute inset-0 bg-black opacity-70 z-10"></div>
+        <div class="relative z-20 max-w-4xl mx-auto">
+            <h1 class="text-5xl md:text-7xl font-bold text-yellow-400 glow-text mb-4">THE ROYALS CLUB</h1>
+            <p class="text-xl md:text-3xl font-semibold text-gray-300">Unlock Words – Unlock Doors!</p>
+            <p class="mt-8 text-lg md:text-xl text-gray-400 max-w-2xl mx-auto">
+                Ignite your passion for language and learning. We empower you with the skills to speak, write, and succeed in every aspect of your life.
+            </p>
+            <a href="#register" class="mt-10 inline-block bg-yellow-500 text-gray-900 font-bold py-4 px-10 rounded-full text-lg md:text-xl hover:bg-yellow-600 transition-all duration-300 shadow-xl">
+                Join Our Club
+            </a>
+        </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section id="about" class="py-16 px-4 md:px-8 bg-gray-900">
+        <div class="container-card max-w-6xl mx-auto rounded-xl p-8 md:p-12 shadow-2xl">
+            <h2 class="text-4xl md:text-5xl font-bold text-yellow-400 mb-6 text-center glow-text">About Us</h2>
+            <p class="text-lg md:text-xl text-gray-400 text-center max-w-3xl mx-auto">
+                The Royals Club is more than just a coaching center; it's a community dedicated to excellence in communication. Our mission is to provide high-quality, personalized training that helps students and professionals gain confidence, improve their skills, and achieve their personal and career goals. We believe that unlocking words is the first step to unlocking a world of opportunities.
+            </p>
+        </div>
+    </section>
+
+    <!-- Courses & Why Join Us Section -->
+    <section id="courses" class="py-16 px-4 md:px-8">
+        <div class="container-card max-w-6xl mx-auto rounded-xl p-8 md:p-12 shadow-2xl">
+            <h2 class="text-4xl md:text-5xl font-bold text-yellow-400 mb-6 text-center glow-text">TURN WORDS INTO OPPORTUNITIES!</h2>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 mt-12">
+                <div>
+                    <h3 class="text-3xl font-semibold text-gray-300 mb-4">Our Courses:</h3>
+                    <ol class="list-decimal list-inside space-y-4 text-lg text-gray-400 mb-8">
+                        <li><span class="text-yellow-400 font-semibold">Beginner Spoken English</span> - Build your basics.</li>
+                        <li><span class="text-yellow-400 font-semibold">Everyday English</span> - Speak with fluency and confidence in daily life.</li>
+                        <li><span class="text-yellow-400 font-semibold">Workplace English</span> - Master communication skills for jobs & interviews.</li>
+                        <li><span class="text-yellow-400 font-semibold">Confidence Booster Sessions</span> - Overcome hesitation and shine in group settings.</li>
+                        <li><span class="text-yellow-400 font-semibold">Subject Coaching (School level):</span>
+                            <ul class="list-disc list-inside ml-6 mt-2 text-base text-gray-500 space-y-1">
+                                <li>English</li>
+                                <li>Physics</li>
+                                <li>Chemistry</li>
+                                <li>Biology</li>
+                                <li>Maths</li>
+                                <li>Urdu</li>
+                            </ul>
+                        </li>
+                    </ol>
+                </div>
+                <div>
+                    <h3 class="text-3xl font-semibold text-gray-300 mb-4">Why Join Us?</h3>
+                    <ul class="list-disc list-inside space-y-4 text-lg text-gray-400">
+                        <li>Speak English with confidence in any situation.</li>
+                        <li>Learn correct pronunciation & grammar naturally.</li>
+                        <li>Build a powerful vocabulary for work, study, and travel.</li>
+                        <li>Enjoy a friendly, supportive, and engaging learning environment.</li>
+                        <li>Receive personalized attention with small class sizes.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-16 px-4 md:px-8 bg-gray-900">
+        <div class="container-card max-w-6xl mx-auto rounded-xl p-8 md:p-12 shadow-2xl">
+            <h2 class="text-4xl md:text-5xl font-bold text-yellow-400 mb-12 text-center glow-text">What Our Students Say</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="bg-gray-800 p-6 rounded-xl shadow-lg glow-effect">
+                    <p class="italic text-gray-400">"My confidence has soared since joining The Royals Club. The teachers are fantastic, and the lessons are practical and fun. I can now speak without hesitation!"</p>
+                    <p class="mt-4 text-sm font-semibold text-yellow-400">- John Doe, Workplace English</p>
+                </div>
+                <!-- Testimonial 2 -->
+                <div class="bg-gray-800 p-6 rounded-xl shadow-lg glow-effect">
+                    <p class="italic text-gray-400">"The subject coaching here is top-notch. I went from struggling with Physics to acing my exams. I highly recommend it!"</p>
+                    <p class="mt-4 text-sm font-semibold text-yellow-400">- Jane Smith, Subject Coaching</p>
+                </div>
+                <!-- Testimonial 3 -->
+                <div class="bg-gray-800 p-6 rounded-xl shadow-lg glow-effect">
+                    <p class="italic text-gray-400">"I've tried other places, but nothing compares to the friendly atmosphere here. I've built my vocabulary and made great friends along the way."</p>
+                    <p class="mt-4 text-sm font-semibold text-yellow-400">- David Lee, Everyday English</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    </section>
+
+    <!-- Registration & Contact Section -->
+    <section id="register" class="py-16 px-4 md:px-8">
+        <div class="container-card max-w-6xl mx-auto rounded-xl p-8 md:p-12 shadow-2xl">
+            <h2 class="text-4xl md:text-5xl font-bold text-yellow-400 mb-12 text-center glow-text">Join Us!</h2>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
+                <!-- Registration Form -->
+                <div>
+                    <div class="text-center mb-8">
+                        <h3 class="text-3xl font-semibold text-gray-300">Registration Form</h3>
+                        <p class="text-gray-400 mt-2">Fill out the form below to register for a course.</p>
+                    </div>
+                    <form id="registrationForm" class="space-y-6">
+                        <div>
+                            <label for="fullName" class="block text-sm font-medium text-gray-300 mb-1">Full Name</label>
+                            <input type="text" id="fullName" name="fullName" required class="w-full px-4 py-3 rounded-lg bg-gray-700 border border-gray-600 text-gray-200 focus:outline-none focus:ring-2 focus:ring-yellow-500 transition duration-300">
+                        </div>
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-300 mb-1">Email Address</label>
+                            <input type="email" id="email" name="email" required class="w-full px-4 py-3 rounded-lg bg-gray-700 border border-gray-600 text-gray-200 focus:outline-none focus:ring-2 focus:ring-yellow-500 transition duration-300">
+                        </div>
+                        <div>
+                            <label for="phone" class="block text-sm font-medium text-gray-300 mb-1">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" class="w-full px-4 py-3 rounded-lg bg-gray-700 border border-gray-600 text-gray-200 focus:outline-none focus:ring-2 focus:ring-yellow-500 transition duration-300">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-300 mb-2">Select Courses (You can choose more than one)</label>
+                            <div class="space-y-2">
+                                <div class="flex items-center">
+                                    <input type="checkbox" id="course1" name="course" value="Beginner Spoken English" class="h-4 w-4 text-yellow-500 bg-gray-700 border-gray-600 rounded focus:ring-yellow-500">
+                                    <label for="course1" class="ml-2 text-sm text-gray-300">Beginner Spoken English</label>
+                                </div>
+                                <div class="flex items-center">
+                                    <input type="checkbox" id="course2" name="course" value="Everyday English" class="h-4 w-4 text-yellow-500 bg-gray-700 border-gray-600 rounded focus:ring-yellow-500">
+                                    <label for="course2" class="ml-2 text-sm text-gray-300">Everyday English</label>
+                                </div>
+                                <div class="flex items-center">
+                                    <input type="checkbox" id="course3" name="course" value="Workplace English" class="h-4 w-4 text-yellow-500 bg-gray-700 border-gray-600 rounded focus:ring-yellow-500">
+                                    <label for="course3" class="ml-2 text-sm text-gray-300">Workplace English</label>
+                                </div>
+                                <div class="flex items-center">
+                                    <input type="checkbox" id="course4" name="course" value="Confidence Booster Sessions" class="h-4 w-4 text-yellow-500 bg-gray-700 border-gray-600 rounded focus:ring-yellow-500">
+                                    <label for="course4" class="ml-2 text-sm text-gray-300">Confidence Booster Sessions</label>
+                                </div>
+                                <div class="flex items-center">
+                                    <input type="checkbox" id="course5" name="course" value="Subject Coaching" class="h-4 w-4 text-yellow-500 bg-gray-700 border-gray-600 rounded focus:ring-yellow-500">
+                                    <label for="course5" class="ml-2 text-sm text-gray-300">Subject Coaching (School Level)</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <label for="subjects" class="block text-sm font-medium text-gray-300 mb-1">
+                                If you selected Subject Coaching, please list the subjects here.
+                            </label>
+                            <textarea id="subjects" name="subjects" rows="3" class="w-full px-4 py-3 rounded-lg bg-gray-700 border border-gray-600 text-gray-200 focus:outline-none focus:ring-2 focus:ring-yellow-500 transition duration-300" placeholder="e.g., Physics, Maths, English..."></textarea>
+                        </div>
+                        <div>
+                            <label for="message" class="block text-sm font-medium text-gray-300 mb-1">
+                                Any other questions or messages?
+                            </label>
+                            <textarea id="message" name="message" rows="3" class="w-full px-4 py-3 rounded-lg bg-gray-700 border border-gray-600 text-gray-200 focus:outline-none focus:ring-2 focus:ring-yellow-500 transition duration-300"></textarea>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" id="submitBtn" class="w-full px-8 py-3 bg-yellow-500 text-gray-900 font-bold rounded-lg hover:bg-yellow-600 transition duration-300 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-offset-2 focus:ring-offset-gray-900 hidden-on-print">
+                                Register Now
+                            </button>
+                        </div>
+                        <div class="mt-6 text-center text-sm text-gray-400">
+                            <p id="userIdDisplay" class="truncate hidden-on-print"></p>
+                            <p id="statusMessage" class="mt-2 hidden-on-print"></p>
+                        </div>
+                    </form>
+                </div>
+                <!-- Contact Info -->
+                <div id="contact" class="flex flex-col space-y-8">
+                    <div class="container-card rounded-xl p-8 shadow-lg">
+                        <h3 class="text-2xl font-semibold text-yellow-400 mb-4">Contact Information</h3>
+                        <p class="text-gray-300">Have questions? We're here to help.</p>
+                        <ul class="mt-4 space-y-2 text-gray-400">
+                            <li class="flex items-center space-x-2">
+                                <span class="text-yellow-400">&#9993;</span>
+                                <span>Email: contact@theroyalsclub.com</span>
+                            </li>
+                            <li class="flex items-center space-x-2">
+                                <span class="text-yellow-400">&#9742;</span>
+                                <span>Phone: +92 312 3456789</span>
+                            </li>
+                            <li class="flex items-center space-x-2">
+                                <span class="text-yellow-400">&#127969;</span>
+                                <span>Address: XYZ Road, Street 1, Town City, Pakistan</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="container-card rounded-xl p-8 shadow-lg">
+                        <h3 class="text-2xl font-semibold text-yellow-400 mb-4">Find Us</h3>
+                        <!-- Placeholder for Map -->
+                        <div class="w-full h-64 bg-gray-800 rounded-lg flex items-center justify-center text-gray-500">
+                           <a href="https://maps.app.goo.gl/3547T865X3467" target="_blank" class="hover:underline">
+                                Map Location
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Print-friendly form (hidden by default) -->
+    <div class="print-form-container hidden visible-on-print p-8">
+        <div class="print-form-header">
+            <h2 class="text-3xl font-bold mb-2">The Royals Club Registration Form</h2>
+            <p>Please fill out this form and submit it to the office.</p>
+        </div>
+        <form class="space-y-6">
+            <div>
+                <label for="print-fullName">Full Name:</label>
+                <input type="text" id="print-fullName" class="w-full border-b border-gray-400">
+            </div>
+            <div>
+                <label for="print-email">Email Address:</label>
+                <input type="email" id="print-email" class="w-full border-b border-gray-400">
+            </div>
+            <div>
+                <label for="print-phone">Phone Number:</label>
+                <input type="tel" id="print-phone" class="w-full border-b border-gray-400">
+            </div>
+            <div>
+                <label>Select Courses:</label>
+                <div class="space-y-2">
+                    <div class="flex items-center">
+                        <input type="checkbox" id="print-course1" class="h-4 w-4 border-gray-400">
+                        <label for="print-course1" class="ml-2">Beginner Spoken English</label>
+                    </div>
+                    <div class="flex items-center">
+                        <input type="checkbox" id="print-course2" class="h-4 w-4 border-gray-400">
+                        <label for="print-course2" class="ml-2">Everyday English</label>
+                    </div>
+                    <div class="flex items-center">
+                        <input type="checkbox" id="print-course3" class="h-4 w-4 border-gray-400">
+                        <label for="print-course3" class="ml-2">Workplace English</label>
+                    </div>
+                    <div class="flex items-center">
+                        <input type="checkbox" id="print-course4" class="h-4 w-4 border-gray-400">
+                        <label for="print-course4" class="ml-2">Confidence Booster Sessions</label>
+                    </div>
+                    <div class="flex items-center">
+                        <input type="checkbox" id="print-course5" class="h-4 w-4 border-gray-400">
+                        <label for="print-course5" class="ml-2">Subject Coaching (School Level)</label>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <label for="print-subjects">Subjects (if applicable):</label>
+                <textarea id="print-subjects" rows="3" class="w-full border border-gray-400"></textarea>
+            </div>
+            <div>
+                <label for="print-message">Any other questions or messages?</label>
+                <textarea id="print-message" rows="3" class="w-full border border-gray-400"></textarea>
+            </div>
+        </form>
+    </div>
+
+    <!-- Footer -->
+    <footer class="text-center py-8 text-gray-500 text-sm mt-12">
+        <p>Created with Gemini</p>
+    </footer>
+
+    <!-- Firebase SDK and Script -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getFirestore, collection, addDoc, setLogLevel } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+        setLogLevel('debug');
+
+        const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
+        const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : {};
+        const initialAuthToken = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null;
+
+        let app, db, auth;
+        if (Object.keys(firebaseConfig).length) {
+            app = initializeApp(firebaseConfig);
+            db = getFirestore(app);
+            auth = getAuth(app);
+        } else {
+            console.error("Firebase config is missing.");
+        }
+
+        const form = document.getElementById('registrationForm');
+        const submitBtn = document.getElementById('submitBtn');
+        const statusMessage = document.getElementById('statusMessage');
+        const userIdDisplay = document.getElementById('userIdDisplay');
+        let userId = null;
+
+        onAuthStateChanged(auth, async (user) => {
+            if (user) {
+                userId = user.uid;
+                userIdDisplay.textContent = `User ID: ${userId}`;
+            } else {
+                userId = crypto.randomUUID();
+                userIdDisplay.textContent = `Anonymous User ID: ${userId}`;
+            }
+        });
+
+        const signInUser = async () => {
+            try {
+                if (initialAuthToken) {
+                    await signInWithCustomToken(auth, initialAuthToken);
+                } else {
+                    await signInAnonymously(auth);
+                }
+            } catch (error) {
+                console.error("Authentication failed:", error);
+                statusMessage.textContent = "Error during authentication. Please try again.";
+                statusMessage.classList.add('text-red-400');
+            }
+        };
+        if (Object.keys(firebaseConfig).length) {
+            signInUser();
+        }
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            if (!db || !userId) {
+                statusMessage.textContent = "Database not ready. Please wait or try again.";
+                statusMessage.classList.add('text-red-400');
+                console.error("Firestore database or user ID not available.");
+                return;
+            }
+
+            const selectedCourses = [];
+            const checkboxes = document.querySelectorAll('input[name="course"]:checked');
+            checkboxes.forEach(checkbox => {
+                selectedCourses.push(checkbox.value);
+            });
+
+            const formData = {
+                fullName: document.getElementById('fullName').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                courses: selectedCourses,
+                subjects: document.getElementById('subjects').value,
+                message: document.getElementById('message').value,
+                timestamp: new Date().toISOString()
+            };
+
+            submitBtn.textContent = "Registering...";
+            submitBtn.disabled = true;
+            statusMessage.textContent = "Submitting your registration...";
+            statusMessage.classList.remove('text-green-400', 'text-red-400');
+            statusMessage.classList.add('text-yellow-400');
+
+            try {
+                const registrationsCollectionPath = `/artifacts/${appId}/users/${userId}/registrations`;
+                const registrationsCollection = collection(db, registrationsCollectionPath);
+                await addDoc(registrationsCollection, formData);
+
+                statusMessage.textContent = "Registration successful! We will be in touch shortly.";
+                statusMessage.classList.remove('text-yellow-400', 'text-red-400');
+                statusMessage.classList.add('text-green-400');
+                form.reset();
+
+            } catch (error) {
+                console.error("Error writing document to Firestore:", error);
+                statusMessage.textContent = "An error occurred. Please try again.";
+                statusMessage.classList.remove('text-green-400', 'text-yellow-400');
+                statusMessage.classList.add('text-red-400');
+            } finally {
+                submitBtn.textContent = "Register Now";
+                submitBtn.disabled = false;
+            }
+        });
+    </script>
+</body>
+</html>
