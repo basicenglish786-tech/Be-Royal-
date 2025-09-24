@@ -1,0 +1,564 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Royals Club - Home</title>
+    <!-- Inter Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #0a0a0f 0%, #151520 50%, #0a0a0f 100%);
+            color: #e2e8f0;
+        }
+        .container-card {
+            background-color: #1a1a2e;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+        }
+        .glow-text {
+            text-shadow: 0 0 10px #FFD700, 0 0 20px #FFD700, 0 0 30px #FFD700;
+        }
+        input, select, textarea {
+            background-color: #2a3348;
+            border: 1px solid #4a5568;
+            color: #e2e8f0;
+        }
+        input:focus, select:focus, textarea:focus {
+            border-color: #FFD700;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.5);
+        }
+        /* Style for required message */
+        input:invalid:required, textarea:invalid:required {
+            box-shadow: 0 0 0 2px #e53e3e;
+        }
+        @keyframes pulse-glow {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        .crown-logo {
+            animation: pulse-glow 2s infinite;
+        }
+    </style>
+</head>
+<div class="container-card max-w-7xl mx-auto rounded-xl p-8 md:p-12 shadow-2xl">
+    <header class="text-center mb-10">
+        <div class="flex items-center justify-center space-x-4 mb-2">
+            <h1 class="text-4xl md:text-5xl font-bold text-yellow-400 glow-text">The Royals Club</h1>
+            <span class="text-4xl md:text-5xl glow-text crown-logo">👑</span>
+        </div>
+        <p class="text-sm md:text-lg text-gray-400">Welcome to the future of learning.</p>
+    </header>
+
+    <!-- Registration Form Section -->
+    <section class="mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-center text-yellow-500 mb-6">Join The Royals Club</h2>
+        <p class="text-center text-gray-300 mb-8 max-w-2xl mx-auto">Fill out the form below to become a member and start your journey towards academic excellence with our expert tutoring and guidance.</p>
+        
+        <form id="registrationForm" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- User ID and App ID Display -->
+            <div class="md:col-span-2 text-center text-sm text-gray-500 mb-4">
+                <p>Your unique User ID: <span id="userIdDisplay" class="font-mono">Loading...</span></p>
+                <p>App ID: <span id="appIdDisplay" class="font-mono">Loading...</span></p>
+            </div>
+
+            <!-- Personal Information -->
+            <div class="md:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="flex flex-col">
+                    <label for="fullName" class="text-gray-300 mb-2 font-medium">Full Name</label>
+                    <input type="text" id="fullName" name="fullName" placeholder="John Doe" class="p-3 rounded-lg" required>
+                </div>
+                <div class="flex flex-col">
+                    <label for="email" class="text-gray-300 mb-2 font-medium">Email Address</label>
+                    <input type="email" id="email" name="email" placeholder="you@example.com" class="p-3 rounded-lg" required>
+                </div>
+                <div class="flex flex-col">
+                    <label for="phone" class="text-gray-300 mb-2 font-medium">Phone Number (optional)</label>
+                    <input type="tel" id="phone" name="phone" placeholder="+1234567890" class="p-3 rounded-lg">
+                </div>
+                <div class="flex flex-col">
+                    <label for="dateOfBirth" class="text-gray-300 mb-2 font-medium">Date of Birth</label>
+                    <input type="date" id="dateOfBirth" name="dateOfBirth" class="p-3 rounded-lg" required>
+                </div>
+                <div class="flex flex-col">
+                    <label for="gradeLevel" class="text-gray-300 mb-2 font-medium">Grade Level</label>
+                    <select id="gradeLevel" name="gradeLevel" class="p-3 rounded-lg" required>
+                        <option value="">Select your grade...</option>
+                        <option value="Middle School">Middle School</option>
+                        <option value="High School">High School</option>
+                        <option value="College">College</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                <div class="flex flex-col">
+                    <label for="gender" class="text-gray-300 mb-2 font-medium">Gender</label>
+                    <select id="gender" name="gender" class="p-3 rounded-lg" required>
+                        <option value="">Select gender...</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                        <option value="Other">Other</option>
+                        <option value="Prefer not to say">Prefer not to say</option>
+                    </select>
+                </div>
+                <div class="flex flex-col">
+                    <label for="city" class="text-gray-300 mb-2 font-medium">Your City</label>
+                    <input type="text" id="city" name="city" placeholder="e.g., New York" class="p-3 rounded-lg" required>
+                </div>
+            </div>
+
+            <!-- Languages -->
+            <div class="md:col-span-2">
+                <p class="text-gray-300 mb-4 font-medium">Your Languages</p>
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                    <label class="flex items-center space-x-2">
+                        <input type="checkbox" name="languages" value="English" class="rounded-sm text-yellow-500 bg-gray-700">
+                        <span class="text-gray-200">English</span>
+                    </label>
+                    <label class="flex items-center space-x-2">
+                        <input type="checkbox" name="languages" value="Urdu" class="rounded-sm text-yellow-500 bg-gray-700">
+                        <span class="text-gray-200">Urdu</span>
+                    </label>
+                    <label class="flex items-center space-x-2">
+                        <input type="checkbox" name="languages" value="Pushto" class="rounded-sm text-yellow-500 bg-gray-700">
+                        <span class="text-gray-200">Pushto</span>
+                    </label>
+                    <label class="flex items-center space-x-2">
+                        <input type="checkbox" name="languages" value="Persian" class="rounded-sm text-yellow-500 bg-gray-700">
+                        <span class="text-gray-200">Persian</span>
+                    </label>
+                    <label class="flex items-center space-x-2">
+                        <input type="checkbox" name="languages" value="Other" class="rounded-sm text-yellow-500 bg-gray-700">
+                        <span class="text-gray-200">Other</span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- English Level -->
+            <div class="md:col-span-2">
+                <p class="text-gray-300 mb-4 font-medium">Your Level of English</p>
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                    <label class="flex items-center space-x-2">
+                        <input type="checkbox" name="englishLevel" value="Beginner / Entry 1 / A1" class="rounded-sm text-yellow-500 bg-gray-700">
+                        <span class="text-gray-200">Beginner / Entry 1 / A1</span>
+                    </label>
+                    <label class="flex items-center space-x-2">
+                        <input type="checkbox" name="englishLevel" value="Elementary / Entry 2 / A2" class="rounded-sm text-yellow-500 bg-gray-700">
+                        <span class="text-gray-200">Elementary / Entry 2 / A2</span>
+                    </label>
+                    <label class="flex items-center space-x-2">
+                        <input type="checkbox" name="englishLevel" value="Intermediate / Entry 3 / B1" class="rounded-sm text-yellow-500 bg-gray-700">
+                        <span class="text-gray-200">Intermediate / Entry 3 / B1</span>
+                    </label>
+                    <label class="flex items-center space-x-2">
+                        <input type="checkbox" name="englishLevel" value="Upper-intermediate / Level 1 / B2" class="rounded-sm text-yellow-500 bg-gray-700">
+                        <span class="text-gray-200">Upper-intermediate / Level 1 / B2</span>
+                    </label>
+                    <label class="flex items-center space-x-2">
+                        <input type="checkbox" name="englishLevel" value="Advanced / Level 2 / C1" class="rounded-sm text-yellow-500 bg-gray-700">
+                        <span class="text-gray-200">Advanced / Level 2 / C1</span>
+                    </label>
+                    <label class="flex items-center space-x-2">
+                        <input type="checkbox" name="englishLevel" value="Other" class="rounded-sm text-yellow-500 bg-gray-700">
+                        <span class="text-gray-200">Other</span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Previous Experience -->
+            <div class="md:col-span-2">
+                <p class="text-gray-300 mb-4 font-medium">Have you attended other classes before?</p>
+                <div class="flex space-x-4">
+                    <label class="flex items-center space-x-2">
+                        <input type="radio" name="previousClasses" value="Yes" class="rounded-full text-yellow-500 bg-gray-700">
+                        <span class="text-gray-200">Yes</span>
+                    </label>
+                    <label class="flex items-center space-x-2">
+                        <input type="radio" name="previousClasses" value="No" class="rounded-full text-yellow-500 bg-gray-700">
+                        <span class="text-gray-200">No</span>
+                    </label>
+                </div>
+                <div class="mt-4">
+                    <label for="previousClassesDetails" class="text-gray-300 mb-2 font-medium">If Yes, please mention them</label>
+                    <textarea id="previousClassesDetails" name="previousClassesDetails" rows="2" class="p-3 rounded-lg w-full" placeholder="e.g., Attended English speaking classes at 'XYZ Academy'"></textarea>
+                </div>
+            </div>
+            
+            <!-- Referral -->
+            <div class="md:col-span-2">
+                <p class="text-gray-300 mb-4 font-medium">Have your friends or relatives enrolled in TRC?</p>
+                <div class="flex space-x-4">
+                    <label class="flex items-center space-x-2">
+                        <input type="radio" name="referral" value="Yes" class="rounded-full text-yellow-500 bg-gray-700">
+                        <span class="text-gray-200">Yes</span>
+                    </label>
+                    <label class="flex items-center space-x-2">
+                        <input type="radio" name="referral" value="No" class="rounded-full text-yellow-500 bg-gray-700">
+                        <span class="text-gray-200">No</span>
+                    </label>
+                </div>
+                <div class="mt-4">
+                    <label for="referralDetails" class="text-gray-300 mb-2 font-medium">If Yes, kindly mention their names</label>
+                    <textarea id="referralDetails" name="referralDetails" rows="2" class="p-3 rounded-lg w-full" placeholder="e.g., Jane Doe, John Smith"></textarea>
+                </div>
+            </div>
+
+            <!-- Time Preference -->
+            <div class="md:col-span-2">
+                <p class="text-gray-300 mb-4 font-medium">Your Time Preference</p>
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                    <label class="flex items-center space-x-2">
+                        <input type="checkbox" name="timePreference" value="Morning" class="rounded-sm text-yellow-500 bg-gray-700">
+                        <span class="text-gray-200">Morning</span>
+                    </label>
+                    <label class="flex items-center space-x-2">
+                        <input type="checkbox" name="timePreference" value="Afternoon" class="rounded-sm text-yellow-500 bg-gray-700">
+                        <span class="text-gray-200">Afternoon</span>
+                    </label>
+                    <label class="flex items-center space-x-2">
+                        <input type="checkbox" name="timePreference" value="Evening" class="rounded-sm text-yellow-500 bg-gray-700">
+                        <span class="text-gray-200">Evening</span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Course Duration -->
+            <div class="md:col-span-2">
+                <p class="text-gray-300 mb-4 font-medium">Your Desired Course Duration</p>
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                    <label class="flex items-center space-x-2">
+                        <input type="checkbox" name="duration" value="2-months" class="rounded-sm text-yellow-500 bg-gray-700">
+                        <span class="text-gray-200">2-months</span>
+                    </label>
+                    <label class="flex items-center space-x-2">
+                        <input type="checkbox" name="duration" value="3-months" class="rounded-sm text-yellow-500 bg-gray-700">
+                        <span class="text-gray-200">3-months</span>
+                    </label>
+                    <label class="flex items-center space-x-2">
+                        <input type="checkbox" name="duration" value="4-months" class="rounded-sm text-yellow-500 bg-gray-700">
+                        <span class="text-gray-200">4-months</span>
+                    </label>
+                    <label class="flex items-center space-x-2">
+                        <input type="checkbox" name="duration" value="6-months" class="rounded-sm text-yellow-500 bg-gray-700">
+                        <span class="text-gray-200">6-months</span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Class Type -->
+            <div class="md:col-span-2">
+                <p class="text-gray-300 mb-4 font-medium">Do you want classes with:</p>
+                <div class="flex space-x-4">
+                    <label class="flex items-center space-x-2">
+                        <input type="checkbox" name="classType" value="Online" class="rounded-sm text-yellow-500 bg-gray-700">
+                        <span class="text-gray-200">Online</span>
+                    </label>
+                    <label class="flex items-center space-x-2">
+                        <input type="checkbox" name="classType" value="In-person" class="rounded-sm text-yellow-500 bg-gray-700">
+                        <span class="text-gray-200">In-person</span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Nature of Interest -->
+            <div class="md:col-span-2">
+                <p class="text-gray-300 mb-4 font-medium">Your nature of interest for English</p>
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                    <label class="flex items-center space-x-2">
+                        <input type="checkbox" name="interest" value="Stay at home wives" class="rounded-sm text-yellow-500 bg-gray-700">
+                        <span class="text-gray-200">Stay at home wives</span>
+                    </label>
+                    <label class="flex items-center space-x-2">
+                        <input type="checkbox" name="interest" value="Students" class="rounded-sm text-yellow-500 bg-gray-700">
+                        <span class="text-gray-200">Students</span>
+                    </label>
+                    <label class="flex items-center space-x-2">
+                        <input type="checkbox" name="interest" value="Job Employee" class="rounded-sm text-yellow-500 bg-gray-700">
+                        <span class="text-gray-200">Job Employee</span>
+                    </label>
+                    <label class="flex items-center space-x-2">
+                        <input type="checkbox" name="interest" value="Intellectual growth" class="rounded-sm text-yellow-500 bg-gray-700">
+                        <span class="text-gray-200">Intellectual growth</span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Language Understanding -->
+            <div class="md:col-span-2">
+                <p class="text-gray-300 mb-4 font-medium">Your understanding of language</p>
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                    <label class="flex items-center space-x-2">
+                        <input type="checkbox" name="understanding" value="Beginner" class="rounded-sm text-yellow-500 bg-gray-700">
+                        <span class="text-gray-200">Beginner</span>
+                    </label>
+                    <label class="flex items-center space-x-2">
+                        <input type="checkbox" name="understanding" value="Average" class="rounded-sm text-yellow-500 bg-gray-700">
+                        <span class="text-gray-200">Average</span>
+                    </label>
+                    <label class="flex items-center space-x-2">
+                        <input type="checkbox" name="understanding" value="Intermediate" class="rounded-sm text-yellow-500 bg-gray-700">
+                        <span class="text-gray-200">Intermediate</span>
+                    </label>
+                    <label class="flex items-center space-x-2">
+                        <input type="checkbox" name="understanding" value="Proficient" class="rounded-sm text-yellow-500 bg-gray-700">
+                        <span class="text-gray-200">Proficient</span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Coaching Details -->
+            <div class="md:col-span-2">
+                <p class="text-gray-300 mb-4 font-medium">Coaching Section</p>
+                <p class="text-gray-300 mb-2 font-medium">Grade</p>
+                <div class="grid grid-cols-3 gap-4 mb-4">
+                    <label class="flex items-center space-x-2">
+                        <input type="checkbox" name="coachingGrade" value="8th" class="rounded-sm text-yellow-500 bg-gray-700">
+                        <span class="text-gray-200">$8^{th}$</span>
+                    </label>
+                    <label class="flex items-center space-x-2">
+                        <input type="checkbox" name="coachingGrade" value="9th" class="rounded-sm text-yellow-500 bg-gray-700">
+                        <span class="text-gray-200">$9^{th}$</span>
+                    </label>
+                    <label class="flex items-center space-x-2">
+                        <input type="checkbox" name="coachingGrade" value="10th" class="rounded-sm text-yellow-500 bg-gray-700">
+                        <span class="text-gray-200">$10^{th}$</span>
+                    </label>
+                </div>
+                <div class="flex flex-col">
+                    <label for="coachingTopics" class="text-gray-300 mb-2 font-medium">Main Topics of Each Subject (Please list here)</label>
+                    <textarea id="coachingTopics" name="coachingTopics" rows="4" placeholder="e.g., Physics: Kinematics, English: Creative Writing" class="p-3 rounded-lg w-full"></textarea>
+                </div>
+            </div>
+
+            <!-- Student Strengths -->
+            <div class="md:col-span-2">
+                <p class="text-gray-300 mb-4 font-medium">Strengths as a student</p>
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                    <label class="flex items-center space-x-2">
+                        <input type="checkbox" name="strengths" value="Foundational Basics" class="rounded-sm text-yellow-500 bg-gray-700">
+                        <span class="text-gray-200">Foundational Basics</span>
+                    </label>
+                    <label class="flex items-center space-x-2">
+                        <input type="checkbox" name="strengths" value="Conceptual Understanding" class="rounded-sm text-yellow-500 bg-gray-700">
+                        <span class="text-gray-200">Conceptual Understanding</span>
+                    </label>
+                    <label class="flex items-center space-x-2">
+                        <input type="checkbox" name="strengths" value="Long Attention Span" class="rounded-sm text-yellow-500 bg-gray-700">
+                        <span class="text-gray-200">Long Attention Span</span>
+                    </label>
+                    <label class="flex items-center space-x-2">
+                        <input type="checkbox" name="strengths" value="Determined" class="rounded-sm text-yellow-500 bg-gray-700">
+                        <span class="text-gray-200">Determined</span>
+                    </label>
+                    <label class="flex items-center space-x-2">
+                        <input type="checkbox" name="strengths" value="Confident" class="rounded-sm text-yellow-500 bg-gray-700">
+                        <span class="text-gray-200">Confident</span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Areas of Improvement -->
+            <div class="md:col-span-2">
+                <p class="text-gray-300 mb-4 font-medium">Areas of improvement</p>
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                    <label class="flex items-center space-x-2">
+                        <input type="checkbox" name="improvement" value="Low Attention Span" class="rounded-sm text-yellow-500 bg-gray-700">
+                        <span class="text-gray-200">Low Attention Span</span>
+                    </label>
+                    <label class="flex items-center space-x-2">
+                        <input type="checkbox" name="improvement" value="Struggling Students" class="rounded-sm text-yellow-500 bg-gray-700">
+                        <span class="text-gray-200">Struggling Students</span>
+                    </label>
+                    <label class="flex items-center space-x-2">
+                        <input type="checkbox" name="improvement" value="Weak Concepts" class="rounded-sm text-yellow-500 bg-gray-700">
+                        <span class="text-gray-200">Weak Concepts</span>
+                    </label>
+                    <label class="flex items-center space-x-2">
+                        <input type="checkbox" name="improvement" value="Low Speed" class="rounded-sm text-yellow-500 bg-gray-700">
+                        <span class="text-gray-200">Low Speed</span>
+                    </label>
+                    <label class="flex items-center space-x-2">
+                        <input type="checkbox" name="improvement" value="Coordination of different concepts" class="rounded-sm text-yellow-500 bg-gray-700">
+                        <span class="text-gray-200">Coordination of different concepts</span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Message and Submit Button -->
+            <div class="md:col-span-2">
+                <label for="message" class="text-gray-300 mb-2 font-medium">Any specific subjects or message?</label>
+                <textarea id="message" name="message" rows="4" placeholder="e.g., I need help with Algebra." class="p-3 rounded-lg w-full"></textarea>
+            </div>
+
+            <div class="md:col-span-2 flex justify-center mt-4">
+                <button type="submit" id="submitButton" class="bg-yellow-500 text-gray-900 font-bold py-3 px-12 rounded-full hover:bg-yellow-600 transition-colors">
+                    Register Now
+                </button>
+            </div>
+            
+            <p id="formStatus" class="md:col-span-2 text-center mt-4 font-semibold"></p>
+        </form>
+    </section>
+
+    <!-- About Section -->
+    <section class="mt-16">
+        <h2 class="text-3xl md:text-4xl font-bold text-center text-yellow-500 mb-6">About Us</h2>
+        <div class="prose prose-invert max-w-4xl mx-auto text-gray-300">
+            <p>Welcome to The Royals Club, where we believe that every student has the potential to excel. Our mission is to provide personalized, high-quality tutoring that empowers students to achieve their academic goals. We offer expert guidance in a variety of subjects, helping you build a strong foundation and gain the confidence to succeed.</p>
+            <p>Our team of experienced tutors is dedicated to creating a supportive learning environment. Whether you're preparing for an exam, struggling with a difficult subject, or simply want to get ahead, we are here to help. Join us and experience the difference that personalized attention can make.</p>
+        </div>
+    </section>
+
+    <!-- New link added here -->
+    <div class="flex justify-center mt-8">
+        <a href="data_viewer.html" class="bg-yellow-500 text-gray-900 font-bold py-3 px-8 rounded-full hover:bg-yellow-600 transition-colors">
+            View Registrations
+        </a>
+    </div>
+</div>
+
+<!-- Firebase SDK and Script -->
+<script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+    import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+    import { getFirestore, doc, setDoc, collection, setLogLevel } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+    // Enable debug logging for Firestore
+    setLogLevel('debug');
+
+    // These variables are provided by the hosting platform and are not available when running locally.
+    const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
+    const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : null;
+    const initialAuthToken = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null;
+
+    const form = document.getElementById('registrationForm');
+    const formStatus = document.getElementById('formStatus');
+    const userIdDisplay = document.getElementById('userIdDisplay');
+    const appIdDisplay = document.getElementById('appIdDisplay');
+
+    // Only initialize Firebase if the config is available
+    let app, db, auth;
+    if (firebaseConfig) {
+        app = initializeApp(firebaseConfig);
+        db = getFirestore(app);
+        auth = getAuth(app);
+        handleAuth();
+    } else {
+        console.error("Firebase config is missing. The app will not function correctly.");
+        formStatus.textContent = "Error: App configuration is missing. Please contact support.";
+        formStatus.className = 'text-red-500 font-semibold text-center mt-4';
+    }
+
+    const handleAuth = async () => {
+        try {
+            if (initialAuthToken) {
+                await signInWithCustomToken(auth, initialAuthToken);
+            } else {
+                await signInAnonymously(auth);
+            }
+            onAuthStateChanged(auth, (user) => {
+                if (user) {
+                    const userId = user.uid;
+                    userIdDisplay.textContent = userId;
+                    appIdDisplay.textContent = appId;
+                } else {
+                    console.log("No user is signed in.");
+                    userIdDisplay.textContent = "N/A";
+                    appIdDisplay.textContent = appId;
+                }
+            });
+        } catch (error) {
+            console.error("Authentication failed:", error);
+            formStatus.textContent = "Authentication failed. Please try again.";
+            formStatus.className = 'text-red-500 font-semibold text-center mt-4';
+        }
+    };
+
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        // Form Data
+        const fullName = document.getElementById('fullName').value;
+        const email = document.getElementById('email').value;
+        const phone = document.getElementById('phone').value;
+        const dateOfBirth = document.getElementById('dateOfBirth').value;
+        const gradeLevel = document.getElementById('gradeLevel').value;
+        const gender = document.getElementById('gender').value;
+        const city = document.getElementById('city').value;
+        const subjects = document.getElementById('message').value;
+        const coachingTopics = document.getElementById('coachingTopics').value;
+        
+        // Checkbox values
+        const courses = Array.from(document.querySelectorAll('input[name="courses"]:checked')).map(el => el.value);
+        const languages = Array.from(document.querySelectorAll('input[name="languages"]:checked')).map(el => el.value);
+        const englishLevel = Array.from(document.querySelectorAll('input[name="englishLevel"]:checked')).map(el => el.value);
+        const previousClasses = document.querySelector('input[name="previousClasses"]:checked')?.value || 'No';
+        const previousClassesDetails = document.getElementById('previousClassesDetails').value;
+        const referral = document.querySelector('input[name="referral"]:checked')?.value || 'No';
+        const referralDetails = document.getElementById('referralDetails').value;
+        const timePreference = Array.from(document.querySelectorAll('input[name="timePreference"]:checked')).map(el => el.value);
+        const duration = Array.from(document.querySelectorAll('input[name="duration"]:checked')).map(el => el.value);
+        const classType = Array.from(document.querySelectorAll('input[name="classType"]:checked')).map(el => el.value);
+        const interest = Array.from(document.querySelectorAll('input[name="interest"]:checked')).map(el => el.value);
+        const understanding = Array.from(document.querySelectorAll('input[name="understanding"]:checked')).map(el => el.value);
+        const coachingGrade = Array.from(document.querySelectorAll('input[name="coachingGrade"]:checked')).map(el => el.value);
+        const strengths = Array.from(document.querySelectorAll('input[name="strengths"]:checked')).map(el => el.value);
+        const improvement = Array.from(document.querySelectorAll('input[name="improvement"]:checked')).map(el => el.value);
+
+        formStatus.textContent = "Submitting...";
+        formStatus.className = 'text-yellow-500 font-semibold text-center mt-4';
+
+        if (!auth || !auth.currentUser) {
+            formStatus.textContent = "Authentication is not ready. Please wait and try again.";
+            formStatus.className = 'text-red-500 font-semibold text-center mt-4';
+            return;
+        }
+
+        const userId = auth.currentUser.uid;
+        const timestamp = new Date().toISOString();
+
+        const registrationData = {
+            fullName,
+            email,
+            phone,
+            dateOfBirth,
+            gender,
+            city,
+            languages,
+            englishLevel,
+            previousClasses,
+            previousClassesDetails,
+            referral,
+            referralDetails,
+            timePreference,
+            duration,
+            classType,
+            interest,
+            understanding,
+            coachingGrade,
+            coachingTopics,
+            strengths,
+            improvement,
+            subjects,
+            courses,
+            timestamp
+        };
+
+        const userRegistrationsRef = collection(db, `/artifacts/${appId}/users/${userId}/registrations`);
+        try {
+            const newDocRef = doc(userRegistrationsRef);
+            await setDoc(newDocRef, registrationData);
+
+            formStatus.textContent = "Registration successful! We will contact you soon.";
+            formStatus.className = 'text-green-500 font-semibold text-center mt-4';
+            form.reset();
+        } catch (error) {
+            console.error("Error writing document:", error);
+            formStatus.textContent = "An error occurred. Please try again later.";
+            formStatus.className = 'text-red-500 font-semibold text-center mt-4';
+        }
+    });
+</script>
