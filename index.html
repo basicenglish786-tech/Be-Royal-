@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Royals Club - Unlock Words, Unlock Doors!</title>
+    <!-- Inter Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #0a0a0f 0%, #151520 50%, #0a0a0f 100%);
+        }
+        .container-card {
+            background-color: #1a1a2e;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .container-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.6);
+        }
+        .glow-text {
+            text-shadow: 0 0 10px #FFD700, 0 0 20px #FFD700, 0 0 30px #FFD700;
+        }
+        .glow-effect {
+            position: relative;
+            z-index: 1;
+        }
+        .glow-effect::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 215, 0, 0.1);
+            border-radius: 12px;
+            pointer-events: none;
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .container-card:hover .glow-effect::before {
+            opacity: 1;
+        }
+        .hero-bg {
+            background-image: url('data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBAQEBAYEBAYEBAQEBAYEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQH/wgAREAA4ADgDAREAAhEBAxEB/8QAGwAAAgMBAQEAAAAAAAAAAAAAAgMAAQQFBgcI/8QAGQEAAgMBAQAAAAAAAAAAAAAAAgMAAQQFBwYI/9oADAMBAhBHAQAAALgAAAAAAAAAACq110r7OAAFVl0q7GABV1Lq19nAAKzLqV9nAAK5Lq11XUAAp0upXW6gAAp0upXWaAAAKNTV1O9qAAAKNTU1UIAAAAAAAAAAAAAABQAAAAAAAABVlAAAAAAABV1AAAAAABVlAAAAAABVlAAAAAAAAAAAAAAA//Z');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            z-index: 0;
+        }
+        .hero-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 1;
+        }
+        @media print {
+            body {
+                background: #ffffff;
+                color: #000000;
+            }
+            .container-card {
+                background-color: #ffffff;
+                box-shadow: none;
+                border: 1px solid #ccc;
+            }
+            input, select, textarea, button, .hidden-on-print, .glow-text, .glow-effect, .hero-bg, .visible-on-print {
+                display: none !important;
+            }
+            .print-form-container {
+                display: block !important;
+                color: #000 !important;
+            }
+            .print-form-container input, .print-form-container textarea {
+                display: block !important;
+                width: 100% !important;
+                border: 1px solid #000 !important;
+                margin-bottom: 1rem !important;
+                background-color: #f0f0f0 !important;
+                color: #000 !important;
+                -webkit-print-color-adjust: exact;
+            }
+            .print-form-container label {
+                display: block !important;
+                font-weight: bold;
+                margin-top: 1rem;
+            }
+            .print-form-container .print-form-header {
+                text-align: center;
+                margin-bottom: 2rem;
+            }
+        }
+    </style>
+</head>
+<body class="text-gray-200">
+
+    <!-- Header & Navigation -->
+    <header class="bg-gray-900 bg-opacity-80 backdrop-blur-sm fixed top-0 left-0 w-full z-50 shadow-lg hidden-on-print">
+        <nav class="container mx-auto flex justify-between items-center py-4 px-4 md:px-8">
+            <a href="#hero" class="flex items-center space-x-2">
+                <!-- This line is the key change! It correctly points to your logo file -->
+                <img src="TR.png" alt="The Royals Club Logo" class="w-12 h-12 rounded-full">
+                <span class="text-2xl font-bold text-yellow-400 glow-text">The Royals Club</span>
+            </a>
+            <div class="space-x-4 md:space-x-8 text-sm md:text-base">
+                <a href="#about" class="hover:text-yellow-400 transition-colors duration-300">About</a>
+                <a href="#events" class="hover:text-yellow-400 transition-colors duration-300">Events</a>
+                <a href="#gallery" class="hover:text-yellow-400 transition-colors duration-300">Gallery</a>
+                <a href="#contact" class="hover:text-yellow-400 transition-colors duration-300">Contact</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero-bg min-h-screen flex items-center justify-center text-center p-4 relative">
+        <div class="relative z-10 p-8 container-card rounded-3xl max-w-4xl w-full">
+            <div class="glow-effect">
+                <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold text-yellow-400 mb-4 glow-text leading-tight">
+                    Welcome to The Royals Club
+                </h1>
+                <p class="text-lg md:text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
+                    Where every word is a key and every page, a new door to wisdom.
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6">
+                    <a href="#events" class="bg-yellow-500 text-gray-900 font-bold py-3 px-8 rounded-full shadow-lg hover:bg-yellow-400 transition-transform transform hover:scale-105">
+                        Upcoming Events
+                    </a>
+                    <a href="#contact" class="bg-gray-700 text-gray-200 font-bold py-3 px-8 rounded-full shadow-lg hover:bg-gray-600 transition-transform transform hover:scale-105">
+                        Join Us
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 px-4">
+        <div class="container mx-auto text-center">
+            <h2 class="text-3xl font-bold text-yellow-400 mb-4">About Our Club</h2>
+            <p class="text-lg max-w-3xl mx-auto text-gray-400">
+                The Royals Club is a vibrant community of avid readers and lifelong learners. We believe in the transformative power of literature and the joy of shared knowledge. Our club is a sanctuary for those who seek to expand their minds, engage in thought-provoking discussions, and connect with fellow book enthusiasts.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
+                <div class="container-card rounded-2xl p-6 glow-effect">
+                    <h3 class="text-xl font-semibold text-yellow-400 mb-2">Engaging Discussions</h3>
+                    <p class="text-sm text-gray-300">
+                        Dive deep into literary themes, characters, and concepts with our weekly discussion groups.
+                    </p>
+                </div>
+                <div class="container-card rounded-2xl p-6 glow-effect">
+                    <h3 class="text-xl font-semibold text-yellow-400 mb-2">Book of the Month</h3>
+                    <p class="text-sm text-gray-300">
+                        Explore new genres and authors with our carefully curated monthly selections.
+                    </p>
+                </div>
+                <div class="container-card rounded-2xl p-6 glow-effect">
+                    <h3 class="text-xl font-semibold text-yellow-400 mb-2">Knowledge Exchange</h3>
+                    <p class="text-sm text-gray-300">
+                        Share your favorite insights and discoveries with a community of passionate learners.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Events Section -->
+    <section id="events" class="py-20 px-4 bg-gray-900">
+        <div class="container mx-auto text-center">
+            <h2 class="text-3xl font-bold text-yellow-400 mb-4">Upcoming Events</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
+                <div class="container-card rounded-2xl p-6 glow-effect">
+                    <h3 class="text-xl font-semibold text-gray-200 mb-2">Book Club: "The Catcher in the Rye"</h3>
+                    <p class="text-sm text-gray-400 mb-4">
+                        Join us for an in-depth discussion on J.D. Salinger's classic.
+                    </p>
+                    <p class="text-sm text-yellow-400 font-medium">Date: Oct 20, 2025</p>
+                    <p class="text-sm text-yellow-400 font-medium">Time: 7:00 PM</p>
+                </div>
+                <div class="container-card rounded-2xl p-6 glow-effect">
+                    <h3 class="text-xl font-semibold text-gray-200 mb-2">Poetry Slam Night</h3>
+                    <p class="text-sm text-gray-400 mb-4">
+                        Share your own works or listen to others in this inspiring evening of verse.
+                    </p>
+                    <p class="text-sm text-yellow-400 font-medium">Date: Nov 5, 2025</p>
+                    <p class="text-sm text-yellow-400 font-medium">Time: 8:00 PM</p>
+                </div>
+                <div class="container-card rounded-2xl p-6 glow-effect">
+                    <h3 class="text-xl font-semibold text-gray-200 mb-2">Author Q&A with Jane Doe</h3>
+                    <p class="text-sm text-gray-400 mb-4">
+                        A special session with the renowned sci-fi author.
+                    </p>
+                    <p class="text-sm text-yellow-400 font-medium">Date: Nov 22, 2025</p>
+                    <p class="text-sm text-yellow-400 font-medium">Time: 7:30 PM</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-20 px-4">
+        <div class="container mx-auto text-center">
+            <h2 class="text-3xl font-bold text-yellow-400 mb-4">Gallery</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8">
+                <img src="https://placehold.co/600x400/1a1a2e/ffd700?text=Book+Discussion" alt="Book Discussion" class="rounded-lg shadow-lg">
+                <img src="https://placehold.co/600x400/1a1a2e/ffd700?text=Event+Night" alt="Event Night" class="rounded-lg shadow-lg">
+                <img src="https://placehold.co/600x400/1a1a2e/ffd700?text=Member+Gathering" alt="Member Gathering" class="rounded-lg shadow-lg">
+                <img src="https://placehold.co/600x400/1a1a2e/ffd700?text=Reading+Session" alt="Reading Session" class="rounded-lg shadow-lg">
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 px-4 bg-gray-900">
+        <div class="container mx-auto text-center">
+            <h2 class="text-3xl font-bold text-yellow-400 mb-4">Contact Us</h2>
+            <p class="text-lg max-w-xl mx-auto text-gray-400">
+                Ready to join the club? Fill out the form below or reach out to us.
+            </p>
+            <div class="container-card rounded-2xl p-8 max-w-2xl mx-auto mt-8 glow-effect hidden-on-print">
+                <form id="contactForm">
+                    <div class="mb-4 text-left">
+                        <label for="name" class="block text-gray-300 text-sm font-semibold mb-2">Name</label>
+                        <input type="text" id="name" name="name" class="w-full bg-gray-700 text-white p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500" placeholder="Your Name" required>
+                    </div>
+                    <div class="mb-4 text-left">
+                        <label for="email" class="block text-gray-300 text-sm font-semibold mb-2">Email Address</label>
+                        <input type="email" id="email" name="email" class="w-full bg-gray-700 text-white p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500" placeholder="your.email@example.com" required>
+                    </div>
+                    <div class="mb-6 text-left">
+                        <label for="message" class="block text-gray-300 text-sm font-semibold mb-2">Message</label>
+                        <textarea id="message" name="message" rows="4" class="w-full bg-gray-700 text-white p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500" placeholder="Your message..." required></textarea>
+                    </div>
+                    <button type="submit" class="bg-yellow-500 text-gray-900 font-bold py-3 px-8 rounded-full shadow-lg hover:bg-yellow-400 transition-transform transform hover:scale-105 w-full">
+                        Send Message
+                    </button>
+                    <button type="button" onclick="printPage()" class="mt-4 bg-gray-700 text-gray-200 font-bold py-3 px-8 rounded-full shadow-lg hover:bg-gray-600 transition-transform transform hover:scale-105 w-full">
+                        Print
+                    </button>
+                </form>
+            </div>
+            <div class="visible-on-print hidden print-form-container">
+                <h1 class="print-form-header">The Royals Club Application</h1>
+                <p>Please fill out and return to our office.</p>
+                <label>Name:</label>
+                <input type="text" placeholder="Your Name">
+                <label>Email Address:</label>
+                <input type="text" placeholder="your.email@example.com">
+                <label>Message:</label>
+                <textarea rows="4" placeholder="Your message..."></textarea>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 bg-opacity-80 backdrop-blur-sm py-8 text-center text-gray-500">
+        <p>&copy; 2025 The Royals Club. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function printPage() {
+            window.print();
+        }
+    </script>
+</body>
+</html>
