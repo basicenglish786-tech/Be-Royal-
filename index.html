@@ -1,0 +1,238 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Royals Club - Home</title>
+    <!-- Inter Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #0a0a0f 0%, #151520 50%, #0a0a0f 100%);
+            color: #e2e8f0;
+        }
+        .container-card {
+            background-color: #1a1a2e;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+        }
+        .glow-text {
+            text-shadow: 0 0 10px #FFD700, 0 0 20px #FFD700, 0 0 30px #FFD700;
+        }
+        input, select, textarea {
+            background-color: #2a3348;
+            border: 1px solid #4a5568;
+            color: #e2e8f0;
+        }
+        input:focus, select:focus, textarea:focus {
+            border-color: #FFD700;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.5);
+        }
+        /* Style for required message */
+        input:invalid:required, textarea:invalid:required {
+            box-shadow: 0 0 0 2px #e53e3e;
+        }
+    </style>
+</head>
+<div class="container-card max-w-7xl mx-auto rounded-xl p-8 md:p-12 shadow-2xl">
+    <header class="text-center mb-10">
+        <h1 class="text-4xl md:text-5xl font-bold text-yellow-400 glow-text mb-2">The Royals Club</h1>
+        <p class="text-sm md:text-lg text-gray-400">Welcome to the future of learning.</p>
+    </header>
+
+    <!-- Registration Form Section -->
+    <section class="mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-center text-yellow-500 mb-6">Join The Royals Club</h2>
+        <p class="text-center text-gray-300 mb-8 max-w-2xl mx-auto">Fill out the form below to become a member and start your journey towards academic excellence with our expert tutoring and guidance.</p>
+        
+        <form id="registrationForm" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- User ID and App ID Display -->
+            <div class="md:col-span-2 text-center text-sm text-gray-500 mb-4">
+                <p>Your unique User ID: <span id="userIdDisplay" class="font-mono">Loading...</span></p>
+                <p>App ID: <span id="appIdDisplay" class="font-mono">Loading...</span></p>
+            </div>
+
+            <!-- Personal Information -->
+            <div class="md:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="flex flex-col">
+                    <label for="fullName" class="text-gray-300 mb-2 font-medium">Full Name</label>
+                    <input type="text" id="fullName" name="fullName" placeholder="John Doe" class="p-3 rounded-lg" required>
+                </div>
+                <div class="flex flex-col">
+                    <label for="email" class="text-gray-300 mb-2 font-medium">Email Address</label>
+                    <input type="email" id="email" name="email" placeholder="you@example.com" class="p-3 rounded-lg" required>
+                </div>
+                <div class="flex flex-col md:col-span-2">
+                    <label for="phone" class="text-gray-300 mb-2 font-medium">Phone Number (optional)</label>
+                    <input type="tel" id="phone" name="phone" placeholder="+1234567890" class="p-3 rounded-lg">
+                </div>
+            </div>
+
+            <!-- Courses and Subjects -->
+            <div class="md:col-span-2">
+                <p class="text-gray-300 mb-4 font-medium">Select Courses of Interest</p>
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                    <label class="flex items-center space-x-2">
+                        <input type="checkbox" name="courses" value="Mathematics" class="rounded-sm text-yellow-500 bg-gray-700">
+                        <span class="text-gray-200">Mathematics</span>
+                    </label>
+                    <label class="flex items-center space-x-2">
+                        <input type="checkbox" name="courses" value="Science" class="rounded-sm text-yellow-500 bg-gray-700">
+                        <span class="text-gray-200">Science</span>
+                    </label>
+                    <label class="flex items-center space-x-2">
+                        <input type="checkbox" name="courses" value="Physics" class="rounded-sm text-yellow-500 bg-gray-700">
+                        <span class="text-gray-200">Physics</span>
+                    </label>
+                    <label class="flex items-center space-x-2">
+                        <input type="checkbox" name="courses" value="Chemistry" class="rounded-sm text-yellow-500 bg-gray-700">
+                        <span class="text-gray-200">Chemistry</span>
+                    </label>
+                    <label class="flex items-center space-x-2">
+                        <input type="checkbox" name="courses" value="Biology" class="rounded-sm text-yellow-500 bg-gray-700">
+                        <span class="text-gray-200">Biology</span>
+                    </label>
+                    <label class="flex items-center space-x-2">
+                        <input type="checkbox" name="courses" value="IT" class="rounded-sm text-yellow-500 bg-gray-700">
+                        <span class="text-gray-200">IT</span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Message and Submit Button -->
+            <div class="md:col-span-2">
+                <label for="message" class="text-gray-300 mb-2 font-medium">Any specific subjects or message?</label>
+                <textarea id="message" name="message" rows="4" placeholder="e.g., I need help with Algebra." class="p-3 rounded-lg w-full"></textarea>
+            </div>
+
+            <div class="md:col-span-2 flex justify-center mt-4">
+                <button type="submit" id="submitButton" class="bg-yellow-500 text-gray-900 font-bold py-3 px-12 rounded-full hover:bg-yellow-600 transition-colors">
+                    Register Now
+                </button>
+            </div>
+            
+            <p id="formStatus" class="md:col-span-2 text-center mt-4 font-semibold"></p>
+        </form>
+    </section>
+
+    <!-- About Section -->
+    <section class="mt-16">
+        <h2 class="text-3xl md:text-4xl font-bold text-center text-yellow-500 mb-6">About Us</h2>
+        <div class="prose prose-invert max-w-4xl mx-auto text-gray-300">
+            <p>Welcome to The Royals Club, where we believe that every student has the potential to excel. Our mission is to provide personalized, high-quality tutoring that empowers students to achieve their academic goals. We offer expert guidance in a variety of subjects, helping you build a strong foundation and gain the confidence to succeed.</p>
+            <p>Our team of experienced tutors is dedicated to creating a supportive learning environment. Whether you're preparing for an exam, struggling with a difficult subject, or simply want to get ahead, we are here to help. Join us and experience the difference that personalized attention can make.</p>
+        </div>
+    </section>
+
+    <!-- New link added here -->
+    <div class="flex justify-center mt-8">
+        <a href="data_viewer.html" class="bg-yellow-500 text-gray-900 font-bold py-3 px-8 rounded-full hover:bg-yellow-600 transition-colors">
+            View Registrations
+        </a>
+    </div>
+</div>
+
+<!-- Firebase SDK and Script -->
+<script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+    import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+    import { getFirestore, doc, setDoc, collection, setLogLevel } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+    // Enable debug logging for Firestore
+    setLogLevel('debug');
+
+    // These variables are provided by the hosting platform and are not available when running locally.
+    const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
+    const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : null;
+    const initialAuthToken = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null;
+
+    const form = document.getElementById('registrationForm');
+    const formStatus = document.getElementById('formStatus');
+    const userIdDisplay = document.getElementById('userIdDisplay');
+    const appIdDisplay = document.getElementById('appIdDisplay');
+
+    // Only initialize Firebase if the config is available
+    let app, db, auth;
+    if (firebaseConfig) {
+        app = initializeApp(firebaseConfig);
+        db = getFirestore(app);
+        auth = getAuth(app);
+        handleAuth();
+    } else {
+        console.error("Firebase config is missing. The app will not function correctly.");
+        formStatus.textContent = "Error: App configuration is missing. Please contact support.";
+        formStatus.className = 'text-red-500 font-semibold text-center mt-4';
+    }
+
+    const handleAuth = async () => {
+        try {
+            if (initialAuthToken) {
+                await signInWithCustomToken(auth, initialAuthToken);
+            } else {
+                await signInAnonymously(auth);
+            }
+            onAuthStateChanged(auth, (user) => {
+                if (user) {
+                    const userId = user.uid;
+                    userIdDisplay.textContent = userId;
+                    appIdDisplay.textContent = appId;
+                } else {
+                    console.log("No user is signed in.");
+                    userIdDisplay.textContent = "N/A";
+                    appIdDisplay.textContent = appId;
+                }
+            });
+        } catch (error) {
+            console.error("Authentication failed:", error);
+            formStatus.textContent = "Authentication failed. Please try again.";
+            formStatus.className = 'text-red-500 font-semibold text-center mt-4';
+        }
+    };
+
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const fullName = document.getElementById('fullName').value;
+        const email = document.getElementById('email').value;
+        const phone = document.getElementById('phone').value;
+        const subjects = document.getElementById('message').value;
+        const courses = Array.from(document.querySelectorAll('input[name="courses"]:checked')).map(el => el.value);
+
+        formStatus.textContent = "Submitting...";
+        formStatus.className = 'text-yellow-500 font-semibold text-center mt-4';
+
+        if (!auth || !auth.currentUser) {
+            formStatus.textContent = "Authentication is not ready. Please wait and try again.";
+            formStatus.className = 'text-red-500 font-semibold text-center mt-4';
+            return;
+        }
+
+        const userId = auth.currentUser.uid;
+        const timestamp = new Date().toISOString();
+
+        const registrationData = {
+            fullName,
+            email,
+            phone,
+            courses,
+            subjects,
+            timestamp
+        };
+
+        const userRegistrationsRef = collection(db, `/artifacts/${appId}/users/${userId}/registrations`);
+        try {
+            const newDocRef = doc(userRegistrationsRef);
+            await setDoc(newDocRef, registrationData);
+
+            formStatus.textContent = "Registration successful! We will contact you soon.";
+            formStatus.className = 'text-green-500 font-semibold text-center mt-4';
+            form.reset();
+        } catch (error) {
+            console.error("Error writing document:", error);
+            formStatus.textContent = "An error occurred. Please try again later.";
+            formStatus.className = 'text-red-500 font-semibold text-center mt-4';
+        }
+    });
+</script>
